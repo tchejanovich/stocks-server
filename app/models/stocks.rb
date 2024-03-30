@@ -1,21 +1,22 @@
 module Stocks
     def stock_values(ticker, from, to)
         info_status_code, info_body = stock_info(ticker, from, to)
-        return error_response if info_status_code != 200
-        
+        return [true] if info_status_code != 200
+
         parsed_body = JSON.parse(info_body)
         return no_content_response if parsed_body['resultsCount'] == 0
-        [200, calculate_values(parsed_body['results'])]
+        response_body = calculate_values(parsed_body['results'])
+        successful_response(response_body)
     end
 
     private
 
-    def no_content_response
-        [204]
+    def successful_response(body)
+        [false, 200, body]
     end
 
-    def error_response
-        [500, { error: 'Unexpected error' }]
+    def no_content_response
+        [false, 204]
     end
     
     def stock_info(ticker, from, to)
