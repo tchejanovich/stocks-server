@@ -1,24 +1,24 @@
-# README
+# Stocks Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was created with Ruby on Rails
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+In the project directory, install the dependencies first:
 
-* System dependencies
+### `bundle install`
 
-* Configuration
+Then run the server:
 
-* Database creation
+### `rails server`
 
-* Database initialization
+The application witll run on [http://localhost:3000](http://localhost:3000)
 
-* How to run the test suite
+## API docs
 
-* Services (job queues, cache servers, search engines, etc.)
+### `GET /stocks/:ticker`
 
-* Deployment instructions
+Params:
 
-* ...
+- `from`: Date string in format `YYYY-MM-DD`
+- `to`: Date string in format `YYYY-MM-DD`
